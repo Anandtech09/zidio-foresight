@@ -1,0 +1,49 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.env/
+
+# Data files (raw data and generated processed datasets)
+data/raw/*.csv
+data/raw/*.zip
+data/processed/**/*.csv
+
+# Model artifacts (all formats and subdirectories)
+models/**/*.pkl
+models/**/*.joblib
+models/**/*.pt
+models/**/*.pth
+models/**/*.txt
+models/**/*.json
+!models/**/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Kaggle API
+kaggle.json
+
+# Logs
+*.log
+
+# Distribution
+dist/
+build/
+*.egg-info/
+UNDERSTANDING.md
