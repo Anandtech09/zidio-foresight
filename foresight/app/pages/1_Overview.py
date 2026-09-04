@@ -70,22 +70,62 @@ def format_count(val: float) -> str:
 st.subheader("Business KPIs")
 c1, c2, c3, c4, c5 = st.columns(5)
 
+tot_skus = df["sku_id"].nunique()
+tot_rev = float(df["revenue"].sum()) if "revenue" in df.columns else 0.0
+tot_units = float(df["units_sold"].sum()) if "units_sold" in df.columns else 0.0
+tot_cats = df["category"].nunique() if "category" in df.columns else 0
+min_date = df["date"].min().strftime("%b %Y")
+max_date = df["date"].max().strftime("%b %Y")
+
 with c1:
-    st.metric("Total SKUs", df["sku_id"].nunique())
+    st.markdown(
+        f'<div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:14px; min-height:96px;">'
+        f'<div style="color:#94a3b8; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">Total SKUs</div>'
+        f'<div style="color:#f8fafc; font-size:1.55rem; font-weight:800; margin-top:4px;">{tot_skus}</div>'
+        f'<div style="color:#64748b; font-size:0.72rem; margin-top:2px;">Active Catalog Items</div>'
+        f'</div>',
+        unsafe_allow_html=True,
+    )
+
 with c2:
-    if "revenue" in df.columns:
-        tot_rev = float(df["revenue"].sum())
-        st.metric("Total Revenue", format_inr(tot_rev), help=f"Exact Revenue: ₹{tot_rev:,.0f}")
+    st.markdown(
+        f'<div style="background:rgba(6,182,212,0.04); border:1px solid rgba(6,182,212,0.3); border-radius:12px; padding:14px; min-height:96px;">'
+        f'<div style="color:#94a3b8; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">Total Revenue</div>'
+        f'<div style="color:#38bdf8; font-size:1.55rem; font-weight:800; margin-top:4px;">{format_inr(tot_rev)}</div>'
+        f'<div style="color:#64748b; font-size:0.72rem; margin-top:2px;">₹{tot_rev/10_000_000:.1f} Cr Gross Sales</div>'
+        f'</div>',
+        unsafe_allow_html=True,
+    )
+
 with c3:
-    if "units_sold" in df.columns:
-        tot_units = float(df["units_sold"].sum())
-        st.metric("Total Units Sold", format_count(tot_units), help=f"Exact Units Sold: {tot_units:,.0f}")
+    st.markdown(
+        f'<div style="background:rgba(34,197,94,0.04); border:1px solid rgba(34,197,94,0.3); border-radius:12px; padding:14px; min-height:96px;">'
+        f'<div style="color:#94a3b8; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">Total Units Sold</div>'
+        f'<div style="color:#4ade80; font-size:1.55rem; font-weight:800; margin-top:4px;">{format_count(tot_units)}</div>'
+        f'<div style="color:#64748b; font-size:0.72rem; margin-top:2px;">{tot_units:,.0f} Total Fulfilled</div>'
+        f'</div>',
+        unsafe_allow_html=True,
+    )
+
 with c4:
-    if "category" in df.columns:
-        st.metric("Categories", df["category"].nunique())
+    st.markdown(
+        f'<div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:14px; min-height:96px;">'
+        f'<div style="color:#94a3b8; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">Categories</div>'
+        f'<div style="color:#f8fafc; font-size:1.55rem; font-weight:800; margin-top:4px;">{tot_cats}</div>'
+        f'<div style="color:#64748b; font-size:0.72rem; margin-top:2px;">Core Product Verticals</div>'
+        f'</div>',
+        unsafe_allow_html=True,
+    )
+
 with c5:
-    date_range = f"{df['date'].min().strftime('%b %Y')} — {df['date'].max().strftime('%b %Y')}"
-    st.metric("Data Period", date_range)
+    st.markdown(
+        f'<div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:14px; min-height:96px;">'
+        f'<div style="color:#94a3b8; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">Data Period</div>'
+        f'<div style="color:#f8fafc; font-size:1.05rem; font-weight:800; margin-top:6px; line-height:1.2;">{min_date} – {max_date}</div>'
+        f'<div style="color:#64748b; font-size:0.72rem; margin-top:4px;">104-Week Historical Window</div>'
+        f'</div>',
+        unsafe_allow_html=True,
+    )
 
 st.divider()
 

@@ -147,8 +147,8 @@ base_url = api_client.base_url
 if backend_online:
     st.markdown(
         f'<div style="background:rgba(6,182,212,0.12); border:1px solid #06b6d4; border-radius:10px; padding:10px 16px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center;">'
-        f'<div><b style="color:#38bdf8;">🟢 FastAPI Backend Active</b> — Connected to REST Microservice on <code>{base_url}</code>. KPI metrics and ML inferences are served over HTTP REST APIs.</div>'
-        f'<a href="{base_url}/docs" target="_blank" style="background:#0284c7; color:#ffffff; padding:4px 12px; border-radius:6px; text-decoration:none; font-size:0.8rem; font-weight:700;">Open Swagger /docs ↗</a>'
+        f'<div><b style="color:#38bdf8;">🟢 FastAPI Backend Active</b> — Connected to Microservice on <code>{base_url}</code>. KPI metrics and ML inferences are served over HTTP REST APIs.</div>'
+        f'<a href="{base_url}/docs" target="_blank" style="background:#0284c7; color:#ffffff; padding:8px 12px; border-radius:6px; text-decoration:none; font-size:0.8rem; font-weight:700;">Open Swagger /docs ↗</a>'
         f'</div>',
         unsafe_allow_html=True,
     )
@@ -156,7 +156,7 @@ else:
     st.markdown(
         f'<div style="background:rgba(239,68,68,0.12); border:1px solid #ef4444; border-radius:10px; padding:10px 16px; margin-bottom:20px;">'
         f'<b style="color:#f87171;">🔴 FastAPI Backend Offline</b> — The Streamlit app is currently falling back to static local CSV cache because the microservice is not running. '
-        f'Expected microservice URL: <code>{base_url}</code>. Start the backend: <code>uvicorn service.main:app --port 8000</code>.'
+        f'Expected microservice URL: <code>{base_url}</code>.'
         f'</div>',
         unsafe_allow_html=True,
     )

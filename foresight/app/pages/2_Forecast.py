@@ -8,6 +8,7 @@ Features:
 """
 
 import sys
+from datetime import datetime
 from pathlib import Path
 
 import numpy as np
@@ -260,16 +261,35 @@ with tab_simulator:
             sim_4w_avg = st.number_input("Recent 4-Week Average Demand (units/wk)", min_value=1.0, max_value=2000.0, value=default_4w_avg, step=5.0)
 
         with col_inp3:
-            st.write("**Calendar & Campaign Overrides**")
-            sim_promo = st.checkbox("Active Promotional Campaign", value=True)
-            sim_holiday = st.checkbox("Holiday Week (Demand Surge Expected)", value=False)
-            st.write("")
+            st.markdown(
+                '<div style="font-weight:700; font-size:0.88rem; color:#f8fafc; margin-bottom:4px;">'
+                '🗓️ Calendar & Campaign Overrides '
+                '<span title="Simulate what-if demand shifts under special marketing campaigns or holiday rushes." style="cursor:help; color:#38bdf8; font-size:0.85rem;">ℹ️</span>'
+                '</div>',
+                unsafe_allow_html=True,
+            )
+            sim_promo = st.checkbox(
+                "📢 Active Promotional Campaign",
+                value=True,
+                help="ℹ️ Promotional Campaign Override:\nSimulates paid marketing ads, catalog front-page placement, or flash sales. Injects promo_flag=1 into the feature pipeline, activating price-elasticity demand lift in both LightGBM and PyTorch LSTM.",
+            )
+            sim_holiday = st.checkbox(
+                "🎉 Holiday Week (Demand Surge Expected)",
+                value=False,
+                help="ℹ️ Holiday Week Override:\nFlags the scenario target week as a national holiday or major festival (e.g. Diwali, Christmas, New Year). Injects is_holiday=1 into the models to activate seasonal demand surge weights.",
+            )
+            st.markdown(
+                '<div style="background:rgba(255,255,255,0.02); border-left:2px solid #06b6d4; padding:3px 8px; margin:4px 0 8px 0; font-size:0.72rem; color:#94a3b8;">'
+                '💡 <b>What is this?</b> Overrides allow operations planners to test "what-if" scenarios: see how demand responds under flash sales (📢) or holiday surges (🎉).'
+                '</div>',
+                unsafe_allow_html=True,
+            )
             submit_btn = st.form_submit_button("⚡ Run Dual-Model Inference", type="primary", use_container_width=True)
 
     # Trigger inference only upon explicit form submission
     if submit_btn:
-        with st.spinner("Invoking PyTorch Deep LSTM and LightGBM models via FastAPI REST..."):
-            st.session_state["manual_sim_result"] = api_client.predict_manual(
+        with st.spinner(f"Running real-time PyTorch LSTM & LightGBM inference for {sim_sku}..."):
+            pred_data = api_client.predict_manual(
                 sku_id=sim_sku,
                 unit_price=sim_price,
                 discount_pct=sim_discount,
@@ -277,11 +297,20 @@ with tab_simulator:
                 promo_flag=1 if sim_promo else 0,
                 recent_4w_avg=sim_4w_avg,
             )
+            pred_data["executed_time"] = datetime.now().strftime("%I:%M:%S %p")
+            pred_data["target_summary"] = f"Price ₹{sim_price:,.0f} | {sim_discount:.0f}% off | 4w avg: {sim_4w_avg} units"
+            st.session_state["manual_sim_result"] = pred_data
+            st.toast(f"⚡ Live ML inference computed for {sim_sku}!", icon="🎯")
+            st.success(
+                f"✅ **Inference Completed Successfully!** Evaluated **{sim_sku}** with Price **₹{sim_price:,.0f}**, "
+                f"Discount **{sim_discount:.0f}%**, Demand **{sim_4w_avg} units/wk**.",
+                icon="⚡",
+            )
 
     # Check if a simulation result is available in session state
     if "manual_sim_result" not in st.session_state:
         # Run default baseline once for initial display
-        st.session_state["manual_sim_result"] = api_client.predict_manual(
+        init_data = api_client.predict_manual(
             sku_id=skus[0],
             unit_price=default_price,
             discount_pct=10.0,
@@ -289,10 +318,14 @@ with tab_simulator:
             promo_flag=1,
             recent_4w_avg=default_4w_avg,
         )
+        init_data["executed_time"] = datetime.now().strftime("%I:%M:%S %p")
+        init_data["target_summary"] = f"Price ₹{default_price:,.0f} | 10% off | 4w avg: {default_4w_avg} units"
+        st.session_state["manual_sim_result"] = init_data
 
     res = st.session_state["manual_sim_result"]
     lgbm = res["lightgbm"]
     lstm = res["lstm"]
+    exec_time = res.get("executed_time", "Recent")
 
     # Model status badge
     is_live = res.get("is_live_model", backend_live)
@@ -303,8 +336,11 @@ with tab_simulator:
 
     st.markdown(
         f'<div style="background:rgba(255,255,255,0.02); border:1px solid rgba(6,182,212,0.3); border-radius:12px; padding:1rem; margin:1.2rem 0;">'
-        f'<div style="display:flex; justify-content:space-between; align-items:center;">'
+        f'<div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">'
+        f'<div style="display:flex; align-items:center; gap:10px;">'
         f'<span style="font-size:0.95rem; font-weight:700; color:#38bdf8;">🧠 Real-Time Scenario Consensus</span>'
+        f'<span style="font-size:0.72rem; color:#94a3b8; background:rgba(255,255,255,0.05); padding:2px 8px; border-radius:6px; border:1px solid rgba(255,255,255,0.08);">🕒 Last Run: {exec_time}</span>'
+        f'</div>'
         f'{model_badge}'
         f'</div>'
         f'<div style="font-size:0.9rem; color:#cbd5e1; margin-top:0.5rem;">{res["explanation"]}</div>'
