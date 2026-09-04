@@ -26,7 +26,22 @@ except ImportError:
 
 from src.utils import DATA_CLEANED, DATA_DASHBOARD, DATA_FEATURES, DATA_FORECASTS
 
-API_URL = os.getenv("FORESIGHT_API_URL", "http://127.0.0.1:8000").rstrip("/")
+
+def get_backend_url() -> str:
+    """Resolve backend URL from Streamlit Cloud Secrets, OS env, or local fallback."""
+    # 1. Check Streamlit Cloud Secrets (Advanced Settings > Secrets)
+    try:
+        import streamlit as st
+        if hasattr(st, "secrets") and "FORESIGHT_API_URL" in st.secrets:
+            return str(st.secrets["FORESIGHT_API_URL"]).rstrip("/")
+    except Exception:
+        pass
+
+    # 2. Check OS environment variable or .env
+    return os.getenv("FORESIGHT_API_URL", "http://127.0.0.1:8000").rstrip("/")
+
+
+API_URL = get_backend_url()
 TIMEOUT_SECONDS = 4.0
 
 

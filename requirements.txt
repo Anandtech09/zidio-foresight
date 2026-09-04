@@ -1,0 +1,2 @@
+# Project FORESIGHT — Root Requirements for Streamlit Cloud Deployment
+-r foresight/requirements.txt
