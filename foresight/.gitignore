@@ -6,7 +6,7 @@ __pycache__/
 # Virtual environments
 venv/
 env/
-.env/
+.env
 
 # Data files (raw data and generated processed datasets)
 data/raw/*.csv
