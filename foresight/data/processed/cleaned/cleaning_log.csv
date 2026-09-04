@@ -1,0 +1,6 @@
+step,detail,rows_affected
+Deduplicate Sales,Removed 614 duplicate date-SKU records,614
+Impute Units Sold,Imputed 2439 values using SKU median,2439
+Cap Outliers,Capped 998 volume outliers via 1.5x IQR,998
+Sales Ingestion Summary,Reconciled 123491 -> 122877 rows across 192 SKUs,0
+Impute Lead Time,Imputed 624 missing lead time values,624

@@ -1,0 +1,193 @@
+sku_id,category,subcategory,avg_weekly_forecast,on_hand_units,on_order_units,lead_time_days,reorder_point,stockout_risk,overstock_risk,quadrant,action,urgency,color,stockout_rupee_at_risk,overstock_rupee_locked,total_rupee_at_stake,forecast_source
+SKU_0001,Furnishings,Sofas,232.55,161.0,0.0,14.0,94.0,0.654,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1850478.98,0.0,1850478.98,LightGBM model predictions
+SKU_0002,Furnishings,Sofas,293.26,38.0,0.0,14.0,34.0,0.935,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,2474590.96,0.0,2474590.96,LightGBM model predictions
+SKU_0003,Furnishings,Sofas,219.85,66.0,120.0,21.0,94.0,0.718,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,2372180.19,0.0,2372180.19,LightGBM model predictions
+SKU_0004,Furnishings,Sofas,272.92,73.0,0.0,21.0,41.0,0.911,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,3526448.44,0.0,3526448.44,LightGBM model predictions
+SKU_0005,Furnishings,Sofas,131.76,33.0,0.0,14.0,22.0,0.875,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,2034641.5,0.0,2034641.5,LightGBM model predictions
+SKU_0006,Furnishings,Sofas,259.41,41.0,164.0,7.0,44.0,0.21,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,328996.92,0.0,328996.92,LightGBM model predictions
+SKU_0007,Furnishings,Sofas,21.16,60.0,0.0,7.0,31.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0008,Furnishings,Sofas,213.61,81.0,0.0,28.0,74.0,0.905,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,3677482.91,0.0,3677482.91,LightGBM model predictions
+SKU_0009,Furnishings,Sofas,264.0,76.0,0.0,14.0,37.0,0.856,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,2366229.43,0.0,2366229.43,LightGBM model predictions
+SKU_0010,Furnishings,Sofas,30.15,95.0,0.0,14.0,92.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0011,Furnishings,Tables,53.31,124.0,0.0,21.0,68.0,0.225,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,166304.03,0.0,166304.03,LightGBM model predictions
+SKU_0012,Furnishings,Tables,17.03,78.0,0.0,21.0,53.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0013,Furnishings,Tables,154.52,77.0,81.0,28.0,96.0,0.744,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,3659855.73,0.0,3659855.73,LightGBM model predictions
+SKU_0014,Furnishings,Tables,168.8,99.0,0.0,7.0,26.0,0.414,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,136602.88,0.0,136602.88,LightGBM model predictions
+SKU_0015,Furnishings,Tables,50.04,106.0,0.0,28.0,67.0,0.47,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,319032.17,0.0,319032.17,LightGBM model predictions
+SKU_0016,Furnishings,Tables,172.31,169.0,0.0,7.0,72.0,0.019,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,9492.58,0.0,9492.58,LightGBM model predictions
+SKU_0017,Furnishings,Tables,277.46,122.0,0.0,14.0,93.0,0.78,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1464548.69,0.0,1464548.69,LightGBM model predictions
+SKU_0018,Furnishings,Tables,108.96,164.0,0.0,14.0,78.0,0.247,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,133605.62,0.0,133605.62,LightGBM model predictions
+SKU_0019,Furnishings,Chairs,261.18,156.0,0.0,7.0,85.0,0.403,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,516560.81,0.0,516560.81,LightGBM model predictions
+SKU_0020,Furnishings,Chairs,32.77,65.0,0.0,7.0,62.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0021,Furnishings,Chairs,137.95,105.0,0.0,21.0,52.0,0.746,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,2875500.5,0.0,2875500.5,LightGBM model predictions
+SKU_0022,Furnishings,Chairs,254.53,127.0,0.0,7.0,72.0,0.501,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,916944.6,0.0,916944.6,LightGBM model predictions
+SKU_0023,Furnishings,Chairs,256.64,25.0,50.0,7.0,47.0,0.708,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,556977.32,0.0,556977.32,LightGBM model predictions
+SKU_0024,Furnishings,Chairs,141.88,107.0,0.0,14.0,31.0,0.623,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,204328.22,0.0,204328.22,LightGBM model predictions
+SKU_0025,Furnishings,Chairs,134.02,129.0,0.0,28.0,74.0,0.759,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1368636.52,0.0,1368636.52,LightGBM model predictions
+SKU_0026,Furnishings,Chairs,21.63,56.0,0.0,21.0,28.0,0.137,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,78156.98,0.0,78156.98,LightGBM model predictions
+SKU_0027,Furnishings,Chairs,28.79,139.0,0.0,7.0,60.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0028,Furnishings,Beds,77.63,77.0,0.0,28.0,40.0,0.752,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,2070524.13,0.0,2070524.13,LightGBM model predictions
+SKU_0029,Furnishings,Beds,107.19,55.0,0.0,7.0,32.0,0.487,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,51682.4,0.0,51682.4,LightGBM model predictions
+SKU_0030,Furnishings,Beds,238.92,148.0,0.0,7.0,91.0,0.381,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,334954.24,0.0,334954.24,LightGBM model predictions
+SKU_0031,Furnishings,Beds,153.6,99.0,0.0,14.0,98.0,0.678,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,594174.67,0.0,594174.67,LightGBM model predictions
+SKU_0032,Furnishings,Beds,173.65,136.0,0.0,7.0,41.0,0.217,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,424416.58,0.0,424416.58,LightGBM model predictions
+SKU_0033,Furnishings,Beds,59.1,71.0,0.0,28.0,67.0,0.7,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1049020.69,0.0,1049020.69,LightGBM model predictions
+SKU_0034,Furnishings,Beds,186.33,68.0,0.0,21.0,29.0,0.878,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,315104.02,0.0,315104.02,LightGBM model predictions
+SKU_0035,Furnishings,Beds,276.38,106.0,0.0,7.0,93.0,0.616,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,54689.43,0.0,54689.43,LightGBM model predictions
+SKU_0036,Furnishings,Beds,239.69,92.0,0.0,7.0,91.0,0.616,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1240141.68,0.0,1240141.68,LightGBM model predictions
+SKU_0037,Furnishings,Beds,98.22,49.0,0.0,21.0,30.0,0.834,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1264397.39,0.0,1264397.39,LightGBM model predictions
+SKU_0038,Furnishings,Beds,206.43,74.0,0.0,7.0,22.0,0.642,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,792839.19,0.0,792839.19,LightGBM model predictions
+SKU_0039,Decor,Vases,141.2,88.0,0.0,14.0,52.0,0.688,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,441223.92,0.0,441223.92,LightGBM model predictions
+SKU_0040,Decor,Vases,262.15,156.0,0.0,28.0,55.0,0.851,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,4666436.24,0.0,4666436.24,LightGBM model predictions
+SKU_0041,Decor,Vases,18.23,197.0,0.0,14.0,89.0,0.0,0.26,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,119603.41,119603.41,LightGBM model predictions
+SKU_0042,Decor,Vases,264.3,183.0,0.0,14.0,56.0,0.654,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,3010412.53,0.0,3010412.53,LightGBM model predictions
+SKU_0043,Decor,Vases,168.75,133.0,0.0,28.0,92.0,0.803,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,2389301.56,0.0,2389301.56,LightGBM model predictions
+SKU_0044,Decor,Vases,151.96,97.0,0.0,28.0,94.0,0.84,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1126694.43,0.0,1126694.43,LightGBM model predictions
+SKU_0045,Decor,Vases,127.24,78.0,0.0,21.0,65.0,0.796,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,924591.21,0.0,924591.21,LightGBM model predictions
+SKU_0046,Decor,Vases,10.83,153.0,0.0,7.0,63.0,0.0,0.434,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,142375.96,142375.96,LightGBM model predictions
+SKU_0047,Decor,Vases,29.43,67.0,0.0,14.0,36.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0048,Decor,Vases,275.59,138.0,0.0,28.0,65.0,0.875,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,3121572.51,0.0,3121572.51,LightGBM model predictions
+SKU_0049,Decor,Wall Art,32.62,69.0,0.0,21.0,35.0,0.295,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,19354.8,0.0,19354.8,LightGBM model predictions
+SKU_0050,Decor,Wall Art,90.66,120.0,0.0,28.0,92.0,0.669,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,613841.1,0.0,613841.1,LightGBM model predictions
+SKU_0051,Decor,Wall Art,237.45,90.0,0.0,14.0,54.0,0.81,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,793582.82,0.0,793582.82,LightGBM model predictions
+SKU_0052,Decor,Wall Art,44.87,54.0,0.0,7.0,39.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0053,Decor,Wall Art,62.78,72.0,0.0,7.0,57.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0054,Decor,Wall Art,247.28,126.0,0.0,21.0,55.0,0.83,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,4098333.99,0.0,4098333.99,LightGBM model predictions
+SKU_0055,Decor,Wall Art,240.11,217.0,0.0,21.0,78.0,0.699,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,2843744.0,0.0,2843744.0,LightGBM model predictions
+SKU_0056,Decor,Wall Art,94.19,58.0,0.0,7.0,46.0,0.384,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,105404.72,0.0,105404.72,LightGBM model predictions
+SKU_0057,Decor,Candles,208.61,57.0,196.0,28.0,64.0,0.697,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,6801514.54,0.0,6801514.54,LightGBM model predictions
+SKU_0058,Decor,Candles,95.44,188.0,0.0,21.0,85.0,0.343,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,694617.97,0.0,694617.97,LightGBM model predictions
+SKU_0059,Decor,Candles,140.4,65.0,0.0,28.0,52.0,0.884,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,4060787.37,0.0,4060787.37,LightGBM model predictions
+SKU_0060,Decor,Candles,77.16,224.0,0.0,28.0,96.0,0.274,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,29375.97,0.0,29375.97,LightGBM model predictions
+SKU_0061,Decor,Candles,68.0,147.0,0.0,21.0,20.0,0.279,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,145874.96,0.0,145874.96,LightGBM model predictions
+SKU_0062,Decor,Candles,139.53,24.0,0.0,7.0,24.0,0.828,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,454626.25,0.0,454626.25,LightGBM model predictions
+SKU_0063,Decor,Candles,185.88,51.0,0.0,28.0,23.0,0.931,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,915991.64,0.0,915991.64,LightGBM model predictions
+SKU_0064,Decor,Candles,130.74,132.0,0.0,7.0,87.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0065,Decor,Candles,74.42,260.0,0.0,28.0,80.0,0.127,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,69404.58,0.0,69404.58,LightGBM model predictions
+SKU_0066,Decor,Candles,86.37,75.0,178.0,21.0,93.0,0.024,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,1005027.71,0.0,1005027.71,LightGBM model predictions
+SKU_0067,Decor,Candles,249.86,169.0,0.0,28.0,45.0,0.831,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,10170642.27,0.0,10170642.27,LightGBM model predictions
+SKU_0068,Decor,Mirrors,164.6,55.0,0.0,28.0,55.0,0.916,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,3298049.66,0.0,3298049.66,LightGBM model predictions
+SKU_0069,Decor,Mirrors,268.68,86.0,0.0,7.0,61.0,0.68,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1494204.48,0.0,1494204.48,LightGBM model predictions
+SKU_0070,Decor,Mirrors,123.35,131.0,0.0,28.0,95.0,0.734,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,3602995.76,0.0,3602995.76,LightGBM model predictions
+SKU_0071,Decor,Mirrors,245.72,118.0,0.0,7.0,32.0,0.52,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1321151.59,0.0,1321151.59,LightGBM model predictions
+SKU_0072,Decor,Mirrors,194.94,94.0,0.0,28.0,41.0,0.879,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,6261541.75,0.0,6261541.75,LightGBM model predictions
+SKU_0073,Decor,Mirrors,193.88,83.0,52.0,21.0,98.0,0.768,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,624218.58,0.0,624218.58,LightGBM model predictions
+SKU_0074,Decor,Mirrors,120.31,122.0,0.0,28.0,38.0,0.746,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,892702.26,0.0,892702.26,LightGBM model predictions
+SKU_0075,Decor,Mirrors,107.4,60.0,0.0,7.0,54.0,0.441,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,271518.54,0.0,271518.54,LightGBM model predictions
+SKU_0076,Decor,Mirrors,29.69,112.0,0.0,14.0,50.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0077,Decor,Mirrors,56.11,38.0,0.0,28.0,24.0,0.831,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1456905.99,0.0,1456905.99,LightGBM model predictions
+SKU_0078,Decor,Mirrors,141.23,75.0,0.0,21.0,44.0,0.823,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,2114892.84,0.0,2114892.84,LightGBM model predictions
+SKU_0079,Kitchen,Cookware,39.49,44.0,53.0,21.0,48.0,0.181,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,398440.63,0.0,398440.63,LightGBM model predictions
+SKU_0080,Kitchen,Cookware,222.93,140.0,0.0,28.0,94.0,0.843,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,2403155.71,0.0,2403155.71,LightGBM model predictions
+SKU_0081,Kitchen,Cookware,21.47,102.0,0.0,14.0,53.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0082,Kitchen,Cookware,281.18,133.0,0.0,28.0,21.0,0.882,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,7539399.41,0.0,7539399.41,LightGBM model predictions
+SKU_0083,Kitchen,Cookware,269.39,129.0,0.0,28.0,72.0,0.88,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,7487812.5,0.0,7487812.5,LightGBM model predictions
+SKU_0084,Kitchen,Cookware,123.61,101.0,0.0,14.0,63.0,0.591,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,739543.56,0.0,739543.56,LightGBM model predictions
+SKU_0085,Kitchen,Cookware,233.83,125.0,0.0,14.0,78.0,0.733,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,267986.92,0.0,267986.92,LightGBM model predictions
+SKU_0086,Kitchen,Cookware,282.25,130.0,0.0,14.0,60.0,0.77,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,4974207.9,0.0,4974207.9,LightGBM model predictions
+SKU_0087,Kitchen,Cookware,193.41,66.0,0.0,21.0,31.0,0.886,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,4729714.2,0.0,4729714.2,LightGBM model predictions
+SKU_0088,Kitchen,Cookware,210.34,114.0,0.0,7.0,73.0,0.458,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,520936.22,0.0,520936.22,LightGBM model predictions
+SKU_0089,Kitchen,Cookware,225.21,73.0,0.0,7.0,34.0,0.676,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1037784.29,0.0,1037784.29,LightGBM model predictions
+SKU_0090,Kitchen,Utensils,111.71,220.0,0.0,21.0,56.0,0.344,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,306737.5,0.0,306737.5,LightGBM model predictions
+SKU_0091,Kitchen,Utensils,85.82,39.0,55.0,14.0,49.0,0.452,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,909167.27,0.0,909167.27,LightGBM model predictions
+SKU_0092,Kitchen,Utensils,175.58,113.0,0.0,7.0,43.0,0.356,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,403513.97,0.0,403513.97,LightGBM model predictions
+SKU_0093,Kitchen,Utensils,26.85,208.0,0.0,7.0,70.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0094,Kitchen,Utensils,278.65,115.0,0.0,21.0,69.0,0.862,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,4477868.14,0.0,4477868.14,LightGBM model predictions
+SKU_0095,Kitchen,Utensils,189.3,172.0,0.0,14.0,82.0,0.546,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1288033.95,0.0,1288033.95,LightGBM model predictions
+SKU_0096,Kitchen,Utensils,207.58,208.0,0.0,28.0,84.0,0.749,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,2894270.73,0.0,2894270.73,LightGBM model predictions
+SKU_0097,Kitchen,Utensils,172.94,88.0,0.0,7.0,82.0,0.491,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,809003.58,0.0,809003.58,LightGBM model predictions
+SKU_0098,Kitchen,Utensils,238.26,106.0,0.0,14.0,33.0,0.778,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,241892.19,0.0,241892.19,LightGBM model predictions
+SKU_0099,Kitchen,Utensils,252.65,58.0,0.0,21.0,32.0,0.923,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,5840525.73,0.0,5840525.73,LightGBM model predictions
+SKU_0100,Kitchen,Storage Jars,57.55,69.0,110.0,28.0,82.0,0.222,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,1226593.97,0.0,1226593.97,LightGBM model predictions
+SKU_0101,Kitchen,Storage Jars,188.45,74.0,0.0,21.0,56.0,0.869,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,2634788.54,0.0,2634788.54,LightGBM model predictions
+SKU_0102,Kitchen,Storage Jars,168.39,33.0,168.0,28.0,44.0,0.702,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1625805.15,0.0,1625805.15,LightGBM model predictions
+SKU_0103,Kitchen,Storage Jars,33.76,108.0,0.0,14.0,50.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0104,Kitchen,Storage Jars,108.46,159.0,0.0,7.0,47.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0105,Kitchen,Storage Jars,220.66,126.0,0.0,21.0,23.0,0.81,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,2477257.79,0.0,2477257.79,LightGBM model predictions
+SKU_0106,Kitchen,Storage Jars,198.28,133.0,0.0,7.0,20.0,0.329,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,394131.68,0.0,394131.68,LightGBM model predictions
+SKU_0107,Kitchen,Storage Jars,152.56,113.0,0.0,28.0,27.0,0.815,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,2688966.71,0.0,2688966.71,LightGBM model predictions
+SKU_0108,Kitchen,Storage Jars,225.52,43.0,0.0,28.0,30.0,0.952,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,3888381.29,0.0,3888381.29,LightGBM model predictions
+SKU_0109,Kitchen,Appliances,41.41,150.0,0.0,28.0,99.0,0.094,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,28884.28,0.0,28884.28,LightGBM model predictions
+SKU_0110,Kitchen,Appliances,209.34,95.0,0.0,14.0,48.0,0.773,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1227649.79,0.0,1227649.79,LightGBM model predictions
+SKU_0111,Kitchen,Appliances,57.78,146.0,0.0,7.0,85.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0112,Kitchen,Appliances,121.31,155.0,0.0,21.0,78.0,0.574,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,115020.79,0.0,115020.79,LightGBM model predictions
+SKU_0113,Kitchen,Appliances,235.53,90.0,0.0,7.0,21.0,0.618,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,680337.77,0.0,680337.77,LightGBM model predictions
+SKU_0114,Kitchen,Appliances,247.54,108.0,0.0,14.0,65.0,0.782,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,546575.04,0.0,546575.04,LightGBM model predictions
+SKU_0115,Kitchen,Appliances,210.92,115.0,0.0,14.0,60.0,0.727,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,552627.05,0.0,552627.05,LightGBM model predictions
+SKU_0116,Kitchen,Appliances,244.81,44.0,151.0,21.0,45.0,0.734,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,3766751.79,0.0,3766751.79,LightGBM model predictions
+SKU_0117,Kitchen,Appliances,25.12,115.0,0.0,7.0,66.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0118,Kitchen,Appliances,191.52,73.0,0.0,14.0,55.0,0.809,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1731994.54,0.0,1731994.54,LightGBM model predictions
+SKU_0119,Kitchen,Appliances,147.15,132.0,0.0,21.0,89.0,0.701,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1325322.04,0.0,1325322.04,LightGBM model predictions
+SKU_0120,Lighting,Lamps,10.6,168.0,0.0,28.0,91.0,0.0,0.495,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,147699.96,147699.96,LightGBM model predictions
+SKU_0121,Lighting,Lamps,255.25,106.0,0.0,14.0,72.0,0.792,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,281918.74,0.0,281918.74,LightGBM model predictions
+SKU_0122,Lighting,Lamps,80.09,107.0,0.0,14.0,82.0,0.332,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,58223.62,0.0,58223.62,LightGBM model predictions
+SKU_0123,Lighting,Lamps,269.18,79.0,0.0,21.0,34.0,0.902,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,2431827.14,0.0,2431827.14,LightGBM model predictions
+SKU_0124,Lighting,Lamps,122.15,59.0,0.0,28.0,49.0,0.879,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1798108.51,0.0,1798108.51,LightGBM model predictions
+SKU_0125,Lighting,Lamps,171.52,168.0,0.0,14.0,79.0,0.51,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1254976.63,0.0,1254976.63,LightGBM model predictions
+SKU_0126,Lighting,Lamps,155.91,82.0,0.0,21.0,44.0,0.825,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,2325503.37,0.0,2325503.37,LightGBM model predictions
+SKU_0127,Lighting,Lamps,224.42,134.0,0.0,7.0,20.0,0.403,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,525986.37,0.0,525986.37,LightGBM model predictions
+SKU_0128,Lighting,Ceiling Lights,246.25,123.0,0.0,21.0,92.0,0.834,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,7079089.02,0.0,7079089.02,LightGBM model predictions
+SKU_0129,Lighting,Ceiling Lights,212.17,160.0,0.0,21.0,46.0,0.749,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,3467749.24,0.0,3467749.24,LightGBM model predictions
+SKU_0130,Lighting,Ceiling Lights,60.96,206.0,0.0,7.0,95.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0131,Lighting,Ceiling Lights,239.31,116.0,0.0,7.0,64.0,0.515,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1148000.0,0.0,1148000.0,LightGBM model predictions
+SKU_0132,Lighting,Ceiling Lights,144.4,62.0,0.0,28.0,50.0,0.893,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,2519726.68,0.0,2519726.68,LightGBM model predictions
+SKU_0133,Lighting,Ceiling Lights,270.85,167.0,0.0,21.0,94.0,0.794,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1169980.84,0.0,1169980.84,LightGBM model predictions
+SKU_0134,Lighting,Ceiling Lights,81.54,159.0,0.0,28.0,96.0,0.513,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,131209.56,0.0,131209.56,LightGBM model predictions
+SKU_0135,Lighting,Ceiling Lights,7.04,154.0,0.0,7.0,82.0,0.0,0.634,Markdown / Clear,Promote or discount to free up capital,MEDIUM,#F39C12,0.0,170821.0,170821.0,LightGBM model predictions
+SKU_0136,Lighting,Ceiling Lights,19.34,57.0,0.0,21.0,38.0,0.018,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,5772.22,0.0,5772.22,LightGBM model predictions
+SKU_0137,Lighting,Ceiling Lights,261.93,40.0,0.0,14.0,21.0,0.924,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1263138.13,0.0,1263138.13,LightGBM model predictions
+SKU_0138,Lighting,Ceiling Lights,198.7,101.0,0.0,21.0,97.0,0.831,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,3574723.71,0.0,3574723.71,LightGBM model predictions
+SKU_0139,Lighting,Fairy Lights,29.66,225.0,0.0,21.0,72.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0140,Lighting,Fairy Lights,203.34,44.0,0.0,14.0,41.0,0.892,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,773776.98,0.0,773776.98,LightGBM model predictions
+SKU_0141,Lighting,Fairy Lights,107.11,188.0,0.0,21.0,64.0,0.415,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,713946.26,0.0,713946.26,LightGBM model predictions
+SKU_0142,Lighting,Fairy Lights,121.2,147.0,0.0,21.0,97.0,0.596,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,926531.16,0.0,926531.16,LightGBM model predictions
+SKU_0143,Lighting,Fairy Lights,206.3,105.0,0.0,28.0,67.0,0.873,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1933885.42,0.0,1933885.42,LightGBM model predictions
+SKU_0144,Lighting,Fairy Lights,71.42,119.0,0.0,14.0,76.0,0.167,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,128926.57,0.0,128926.57,LightGBM model predictions
+SKU_0145,Lighting,Fairy Lights,67.08,122.0,0.0,14.0,68.0,0.091,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,62701.51,0.0,62701.51,LightGBM model predictions
+SKU_0146,Lighting,Fairy Lights,169.73,51.0,0.0,21.0,50.0,0.9,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1013948.32,0.0,1013948.32,LightGBM model predictions
+SKU_0147,Lighting,Fairy Lights,231.89,122.0,0.0,28.0,31.0,0.868,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,294322.86,0.0,294322.86,LightGBM model predictions
+SKU_0148,Lighting,Fairy Lights,110.96,176.0,0.0,14.0,56.0,0.207,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,206766.0,0.0,206766.0,LightGBM model predictions
+SKU_0149,Lighting,Fairy Lights,236.2,149.0,0.0,14.0,88.0,0.685,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1507579.68,0.0,1507579.68,LightGBM model predictions
+SKU_0150,Lighting,Candle Holders,220.68,211.0,0.0,7.0,47.0,0.044,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,10755.3,0.0,10755.3,LightGBM model predictions
+SKU_0151,Lighting,Candle Holders,15.66,33.0,144.0,28.0,37.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,221729.34,0.0,221729.34,LightGBM model predictions
+SKU_0152,Lighting,Candle Holders,220.05,142.0,0.0,14.0,51.0,0.677,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1681820.81,0.0,1681820.81,LightGBM model predictions
+SKU_0153,Lighting,Candle Holders,215.01,83.0,0.0,7.0,66.0,0.614,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1605280.03,0.0,1605280.03,LightGBM model predictions
+SKU_0154,Lighting,Candle Holders,150.08,51.0,0.0,7.0,49.0,0.66,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,530464.21,0.0,530464.21,LightGBM model predictions
+SKU_0155,Lighting,Candle Holders,272.85,27.0,0.0,21.0,23.0,0.967,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,784661.51,0.0,784661.51,LightGBM model predictions
+SKU_0156,Lighting,Candle Holders,152.79,104.0,0.0,14.0,96.0,0.66,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1981897.85,0.0,1981897.85,LightGBM model predictions
+SKU_0157,Lighting,Candle Holders,246.82,90.0,0.0,28.0,79.0,0.909,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,3076368.18,0.0,3076368.18,LightGBM model predictions
+SKU_0158,Storage,Shelves,41.61,181.0,0.0,21.0,84.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0159,Storage,Shelves,30.69,221.0,0.0,7.0,87.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0160,Storage,Shelves,241.64,86.0,0.0,7.0,66.0,0.644,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,678569.59,0.0,678569.59,LightGBM model predictions
+SKU_0161,Storage,Shelves,112.02,228.0,0.0,28.0,70.0,0.491,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,2392161.38,0.0,2392161.38,LightGBM model predictions
+SKU_0162,Storage,Shelves,262.07,215.0,0.0,21.0,72.0,0.727,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,3829684.98,0.0,3829684.98,LightGBM model predictions
+SKU_0163,Storage,Shelves,52.44,27.0,130.0,28.0,30.0,0.251,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,937609.74,0.0,937609.74,LightGBM model predictions
+SKU_0164,Storage,Shelves,137.7,151.0,0.0,7.0,98.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0165,Storage,Shelves,171.49,21.0,76.0,28.0,39.0,0.859,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,192726.28,0.0,192726.28,LightGBM model predictions
+SKU_0166,Storage,Shelves,220.64,64.0,0.0,7.0,24.0,0.71,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1297693.77,0.0,1297693.77,LightGBM model predictions
+SKU_0167,Storage,Baskets,29.48,170.0,0.0,21.0,91.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0168,Storage,Baskets,222.61,73.0,0.0,21.0,26.0,0.891,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,5011451.82,0.0,5011451.82,LightGBM model predictions
+SKU_0169,Storage,Baskets,279.1,98.0,0.0,7.0,73.0,0.649,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,177289.38,0.0,177289.38,LightGBM model predictions
+SKU_0170,Storage,Baskets,212.04,96.0,0.0,28.0,79.0,0.887,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,4765713.63,0.0,4765713.63,LightGBM model predictions
+SKU_0171,Storage,Baskets,194.47,89.0,0.0,7.0,58.0,0.542,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,502623.47,0.0,502623.47,LightGBM model predictions
+SKU_0172,Storage,Baskets,268.36,29.0,0.0,7.0,23.0,0.892,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1601721.34,0.0,1601721.34,LightGBM model predictions
+SKU_0173,Storage,Baskets,239.39,97.0,0.0,21.0,59.0,0.865,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,4305413.87,0.0,4305413.87,LightGBM model predictions
+SKU_0174,Storage,Baskets,26.58,47.0,146.0,28.0,94.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,84650.98,0.0,84650.98,LightGBM model predictions
+SKU_0175,Storage,Boxes,86.89,252.0,0.0,28.0,84.0,0.275,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,1016363.62,0.0,1016363.62,LightGBM model predictions
+SKU_0176,Storage,Boxes,29.53,64.0,0.0,14.0,64.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0177,Storage,Boxes,280.15,241.0,0.0,7.0,66.0,0.14,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,257202.97,0.0,257202.97,LightGBM model predictions
+SKU_0178,Storage,Boxes,284.35,22.0,0.0,14.0,20.0,0.961,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,2606939.41,0.0,2606939.41,LightGBM model predictions
+SKU_0179,Storage,Boxes,36.1,99.0,0.0,21.0,44.0,0.086,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,17976.84,0.0,17976.84,LightGBM model predictions
+SKU_0180,Storage,Boxes,181.51,80.0,0.0,21.0,68.0,0.853,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1701892.09,0.0,1701892.09,LightGBM model predictions
+SKU_0181,Storage,Boxes,204.47,53.0,109.0,21.0,87.0,0.736,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,6784083.53,0.0,6784083.53,LightGBM model predictions
+SKU_0182,Storage,Boxes,137.98,206.0,0.0,14.0,66.0,0.253,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,184520.17,0.0,184520.17,LightGBM model predictions
+SKU_0183,Storage,Boxes,230.65,107.0,0.0,14.0,80.0,0.768,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,371036.46,0.0,371036.46,LightGBM model predictions
+SKU_0184,Storage,Boxes,233.19,171.0,0.0,21.0,65.0,0.756,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,5454925.89,0.0,5454925.89,LightGBM model predictions
+SKU_0185,Storage,Hooks,223.5,174.0,0.0,21.0,48.0,0.74,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,2581753.57,0.0,2581753.57,LightGBM model predictions
+SKU_0186,Storage,Hooks,197.85,141.0,0.0,21.0,61.0,0.762,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,736743.45,0.0,736743.45,LightGBM model predictions
+SKU_0187,Storage,Hooks,219.32,80.0,0.0,21.0,72.0,0.878,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,5847316.14,0.0,5847316.14,LightGBM model predictions
+SKU_0188,Storage,Hooks,83.0,87.0,0.0,7.0,84.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0189,Storage,Hooks,95.12,182.0,0.0,28.0,69.0,0.522,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,1638437.66,0.0,1638437.66,LightGBM model predictions
+SKU_0190,Storage,Hooks,24.2,114.0,0.0,28.0,63.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0191,Storage,Hooks,26.58,174.0,0.0,7.0,75.0,0.0,0.0,Healthy,No action needed; leave as is,LOW,#27AE60,0.0,0.0,0.0,LightGBM model predictions
+SKU_0192,Storage,Hooks,123.86,92.0,0.0,21.0,71.0,0.752,0.0,Reorder Now,Raise a replenishment order before stock runs out,HIGH,#E74C3C,2528155.79,0.0,2528155.79,LightGBM model predictions

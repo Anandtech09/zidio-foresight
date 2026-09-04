@@ -1,0 +1,4 @@
+name,wape,mape,bias,rmse,improvement_pct
+PyTorch LSTM,0.0742,8.4,-1.46,14.08,62.87
+LightGBM,0.0832,25.21,10.6,30.07,58.34
+Seasonal Naive (Baseline),0.1998,45.48,17.11,48.71,0.0

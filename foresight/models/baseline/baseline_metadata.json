@@ -1,0 +1,15 @@
+{
+  "model_name": "Seasonal Naive Baseline",
+  "season_period_weeks": 52,
+  "horizon_weeks": 6,
+  "created_at": "2026-09-04T14:03:39.181872",
+  "metrics": {
+    "wape": 0.19978069588938516,
+    "mape": 45.478992659240724,
+    "bias": 17.10503472222222,
+    "rmse": 48.71238310082059,
+    "n_skus": 192,
+    "n_forecasts": 1152,
+    "median_sku_wape": 0.20359281437125748
+  }
+}

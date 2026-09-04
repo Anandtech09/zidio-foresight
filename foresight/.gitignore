@@ -8,19 +8,6 @@ venv/
 env/
 .env
 
-# Data files (raw data and generated processed datasets)
-data/raw/*.csv
-data/raw/*.zip
-data/processed/**/*.csv
-
-# Model artifacts (all formats and subdirectories)
-models/**/*.pkl
-models/**/*.joblib
-models/**/*.pt
-models/**/*.pth
-models/**/*.txt
-models/**/*.json
-!models/**/.gitkeep
 
 # IDE
 .vscode/
