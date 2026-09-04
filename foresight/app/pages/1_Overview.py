@@ -47,6 +47,25 @@ if data["analysis"] is None:
 
 df = data["analysis"]
 
+# Helper formatters to prevent Streamlit metric truncation (e.g. ₹11,552,94...)
+def format_inr(val: float) -> str:
+    if val >= 10_000_000:
+        return f"₹{val / 10_000_000:.2f} Cr"
+    elif val >= 100_000:
+        return f"₹{val / 100_000:.2f} L"
+    return f"₹{val:,.0f}"
+
+
+def format_count(val: float) -> str:
+    if val >= 1_000_000:
+        return f"{val / 1_000_000:.2f} M"
+    elif val >= 100_000:
+        return f"{val / 100_000:.1f} L"
+    elif val >= 1_000:
+        return f"{val / 1_000:.1f} K"
+    return f"{val:,.0f}"
+
+
 # --- KPIs ---
 st.subheader("Business KPIs")
 c1, c2, c3, c4, c5 = st.columns(5)
@@ -55,10 +74,12 @@ with c1:
     st.metric("Total SKUs", df["sku_id"].nunique())
 with c2:
     if "revenue" in df.columns:
-        st.metric("Total Revenue", f"₹{df['revenue'].sum():,.0f}")
+        tot_rev = float(df["revenue"].sum())
+        st.metric("Total Revenue", format_inr(tot_rev), help=f"Exact Revenue: ₹{tot_rev:,.0f}")
 with c3:
     if "units_sold" in df.columns:
-        st.metric("Total Units Sold", f"{df['units_sold'].sum():,.0f}")
+        tot_units = float(df["units_sold"].sum())
+        st.metric("Total Units Sold", format_count(tot_units), help=f"Exact Units Sold: {tot_units:,.0f}")
 with c4:
     if "category" in df.columns:
         st.metric("Categories", df["category"].nunique())

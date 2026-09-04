@@ -33,12 +33,7 @@ In accordance with the non-negotiable rule of the engagement (*"Beat the baselin
 
 ---
 
-## 🎨 System Architecture & Figma Blueprint
-
-A complete high-fidelity system architecture diagram is available for design presentations and engineering onboarding:
-- **Interactive Figma Board:** [reports/figma_architecture_board.html](file:///d:/Telegram/Zidio_project/foresight/reports/figma_architecture_board.html) *(open directly in your browser)*
-- **Figma Vector Asset (Drag & Drop):** [reports/foresight_figma_architecture.svg](file:///d:/Telegram/Zidio_project/foresight/reports/foresight_figma_architecture.svg) *(imports as fully editable vector layers, frames, and typography in Figma)*
-- **Architecture Canvas Mockup:** [reports/figma_architecture.png](file:///d:/Telegram/Zidio_project/foresight/reports/figma_architecture.png)
+## 🎨 System Architecture Overview
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
