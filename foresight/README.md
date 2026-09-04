@@ -33,6 +33,42 @@ In accordance with the non-negotiable rule of the engagement (*"Beat the baselin
 
 ---
 
+## 🎨 System Architecture & Figma Blueprint
+
+A complete high-fidelity system architecture diagram is available for design presentations and engineering onboarding:
+- **Interactive Figma Board:** [reports/figma_architecture_board.html](file:///d:/Telegram/Zidio_project/foresight/reports/figma_architecture_board.html) *(open directly in your browser)*
+- **Figma Vector Asset (Drag & Drop):** [reports/foresight_figma_architecture.svg](file:///d:/Telegram/Zidio_project/foresight/reports/foresight_figma_architecture.svg) *(imports as fully editable vector layers, frames, and typography in Figma)*
+- **Architecture Canvas Mockup:** [reports/figma_architecture.png](file:///d:/Telegram/Zidio_project/foresight/reports/figma_architecture.png)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                       TIER 1: Ingestion & Reconciliation                         │
+│  Raw Data (Sales, Catalog, Calendar, Inv) ──► Imputation, IQR Capping, As-Of Join│
+└────────────────────────────────────────┬────────────────────────────────────────┘
+                                         ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                       TIER 2: Feature Store & Signals                           │
+│  Lags (t-1..t-8) ──► Rolling Stats (4,8,12w) ──► Trig Encodings ──► Elasticities │
+└────────────────────────────────────────┬────────────────────────────────────────┘
+                                         ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                       TIER 3: Forecasting Engine Zoo                            │
+│  Seasonal-Naive (0.1998)  │  LightGBM Point+Quantiles (0.0832)  │  LSTM (0.0767) │
+└────────────────────────────────────────┬────────────────────────────────────────┘
+                                         ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                       TIER 4: Risk Matrix & Capital-at-Stake                    │
+│  Stockout vs Overstock Risk Scores ──► 2x2 Quadrant Matrix ──► ₹ at Stake Calc  │
+└────────────────────────────────────────┬────────────────────────────────────────┘
+                                         ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                       TIER 5: Serving & Presentation Layer                      │
+│  Streamlit Multi-Page Application (app/)  │  FastAPI REST Microservice (service/)│
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 🗂️ Data Architecture & Storage Structure
 
 All raw extracts and processed artifacts are organized in a clean, categorized directory structure:
@@ -86,6 +122,25 @@ The risk engine maps forecast demand against lead-time inventory to assign every
 
 ---
 
+## ⚙️ Environment Configuration & Deployment (.env)
+
+Project FORESIGHT uses `.env` for zero-code configuration between local development and cloud production.
+
+```bash
+# Copy template to .env
+cp .env.example .env
+```
+
+|  Variable | Default Value | Purpose |
+|---|---|---|
+| `FORESIGHT_API_HOST` | `127.0.0.1` | Host interface for FastAPI microservice |
+| `FORESIGHT_API_PORT` | `8000` | Port for FastAPI microservice |
+| `FORESIGHT_API_URL` | `http://127.0.0.1:8000` | Microservice base URL consumed by Streamlit |
+
+*In production deployments (AWS EC2, Docker, Render, Railway), set `FORESIGHT_API_URL` to your domain or service name (e.g., `https://api.foresight.yourdomain.com`).*
+
+---
+
 ## ⚡ How to Run the Project (Windows & Cross-Platform)
 
 ### 🟢 Single-Click Execution (Windows)
@@ -98,29 +153,56 @@ It executes all 6 pipeline stages end-to-end:
 5. `src.forecast` (training LightGBM + PyTorch LSTM, model backtesting)
 6. `src.risk` (stockout/overstock risk scoring and Rupee quantification)
 
-### 🖥️ Launching the Web Dashboard
-```powershell
-.\venv\Scripts\streamlit.exe run app/streamlit_app.py
-```
-*Access in browser at: `http://localhost:8501`*
-
-### 🔌 Launching the REST Scoring API
+### 🔌 Step 1: Launching the Modular FastAPI Microservice
 ```powershell
 .\venv\Scripts\uvicorn.exe service.main:app --reload --port 8000
 ```
 *Interactive Swagger Documentation available at: `http://localhost:8000/docs`*
 
+### 🖥️ Step 2: Launching the Web Dashboard
+```powershell
+.\venv\Scripts\streamlit.exe run app/streamlit_app.py
+```
+*Access in browser at: `http://localhost:8501`*
+
+> **Architecture Status Indicator:**
+> - When FastAPI is running: The dashboard connects to live REST endpoints (`🟢 REST API: ONLINE`), performing real-time PyTorch and LightGBM model inferences.
+> - When FastAPI is stopped: The dashboard displays an alert (`🔴 FastAPI Backend Offline`), operating in local cached mode and prompting the user to start uvicorn.
+
 ---
 
-## 🖥️ Dashboard Features
+## 🏗️ Modular Microservice Architecture (`service/`)
 
-The Streamlit dashboard features a unified, responsive dark theme designed specifically for operations and merchandise planners:
-- **Executive Summary (`app/streamlit_app.py`):** High-level KPI cards (Total SKUs, SKUs at Risk, Total ₹ at Stake, Best WAPE, Total Revenue), dynamic model comparison card, decisioning pie chart, and quick-action summaries.
+The backend microservice is cleanly structured into decoupled, single-responsibility routers:
+
+```
+service/
+├── config.py              # Loads .env configurations (host, port, API URL)
+├── state.py               # Singleton state cache (loads LightGBM, PyTorch LSTM, scalers)
+├── schemas.py             # Pydantic v2 validation contracts for requests/responses
+├── main.py                # Slim FastAPI app (CORS, lifespan, router mounting)
+└── routers/
+    ├── system.py          # /health and /api/catalog
+    ├── portfolio.py       # /portfolio/overview and /models/comparison
+    ├── forecast.py        # /skus, /sku/{id}/forecast, /sku/{id}/history, /batch/forecast
+    ├── risk.py            # /risk/catalog and /risk/summary
+    └── inference.py       # /predict/manual (coherent dual-model live scenario inference)
+```
+
+---
+
+## 🖥️ Dashboard Features & Pages
+
+The Streamlit dashboard features a unified, responsive dark theme designed for operations managers, merchandise planners, and developers:
+- **Executive Summary (`app/streamlit_app.py`):** Live backend status indicator (`⚡ REST API: ONLINE`), high-level portfolio KPIs, model comparison card, risk distribution donut, and quick-action summaries.
 - **1. Overview (`pages/1_Overview.py`):** Multi-year revenue trends, category revenue breakdown, demand distributions, and promotional uplift analysis.
-- **2. Forecast (`pages/2_Forecast.py`):** Multi-model visualizer comparing Actuals vs Seasonal-Naive Baseline vs LightGBM with 80% confidence interval band, plus SKU-level WAPE/MAPE metrics and full comparison table.
+- **2. Forecast & Scenario Simulator (`pages/2_Forecast.py`):**
+  - **Multi-Model Visualizer:** Actuals vs Seasonal-Naive Baseline vs LightGBM with 80% confidence interval bands (Q10/Q90).
+  - **Live Dual-Model ML Simulator:** Interactive scenario calculator allowing planners to alter price, discount %, promotion, and demand to trigger real-time comparative inference across **PyTorch LSTM and LightGBM**.
 - **3. Risk (`pages/3_Risk.py`):** Interactive decisioning scatter grid plotting Stockout Risk vs Overstock Risk with bubble size proportional to Rupee value at stake.
 - **4. Reorder (`pages/4_Reorder.py`):** Prioritized actionable reorder and markdown lists with one-click CSV export for procurement teams.
 - **5. EDA & Data Quality (`pages/5_EDA.py`):** Data cleaning decision log audit trail, Pareto analysis (80/20 revenue concentration), monthly seasonality, and day-of-week demand patterns.
+- **6. REST API Developer Portal (`pages/6_API_Docs.py`):** Interactive API catalog detailing all available FastAPI endpoints, schemas, parameters, and live endpoint test console.
 
 ---
 

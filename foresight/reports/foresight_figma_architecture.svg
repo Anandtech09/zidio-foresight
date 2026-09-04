@@ -1,0 +1,351 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" width="100%" height="100%" style="background:#090d16; font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c101d"/>
+      <stop offset="100%" stop-color="#060911"/>
+    </linearGradient>
+
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="apiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#312e81"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+
+    <linearGradient id="uiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#172554"/>
+    </linearGradient>
+
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#06b6d4" />
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#22c55e" />
+    </marker>
+    <marker id="arrowAmber" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#f59e0b" />
+    </marker>
+    <marker id="arrowPurple" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#a855f7" />
+    </marker>
+  </defs>
+
+  <rect width="1600" height="1100" fill="url(#bgGrad)"/>
+  
+  <!-- Canvas Grid Dots -->
+  <g opacity="0.08" fill="#94a3b8">
+    <pattern id="dotGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5"/>
+    </pattern>
+    <rect width="1600" height="1100" fill="url(#dotGrid)" />
+  </g>
+
+  <!-- Title Header Frame -->
+  <g transform="translate(60, 35)">
+    <rect width="1480" height="85" rx="14" fill="#131929" stroke="#1e293b" stroke-width="1.5"/>
+    <circle cx="45" cy="42" r="18" fill="#06b6d4" opacity="0.2"/>
+    <text x="45" y="48" font-size="20" text-anchor="middle" fill="#22d3ee">📦</text>
+    <text x="80" y="38" font-size="22" font-weight="800" fill="#f8fafc" letter-spacing="-0.5px">Project FORESIGHT — Decoupled Client-Server System Architecture</text>
+    <text x="80" y="60" font-size="13" font-weight="500" fill="#94a3b8">Streamlit UI &lt;— HTTP REST —&gt; FastAPI Microservice &lt;— Dual ML Inference (PyTorch LSTM + LightGBM)</text>
+    
+    <!-- Badges -->
+    <g transform="translate(1120, 28)">
+      <rect width="170" height="28" rx="14" fill="#312e81" fill-opacity="0.4" stroke="#6366f1" stroke-width="1"/>
+      <text x="85" y="18" font-size="11" font-weight="700" fill="#a5b4fc" text-anchor="middle">CLIENT-SERVER ARCH</text>
+    </g>
+    <g transform="translate(1305, 28)">
+      <rect width="150" height="28" rx="14" fill="#15803d" fill-opacity="0.3" stroke="#22c55e" stroke-width="1"/>
+      <text x="75" y="18" font-size="11" font-weight="700" fill="#4ade80" text-anchor="middle">LIVE DUAL ML SIM</text>
+    </g>
+  </g>
+
+  <!-- ==================== TIER 1: INGESTION & DATA LAKE ==================== -->
+  <g transform="translate(60, 140)">
+    <rect width="1480" height="135" rx="16" fill="#0b1329" fill-opacity="0.6" stroke="#0284c7" stroke-opacity="0.3" stroke-width="1.5"/>
+    <text x="24" y="26" font-size="12" font-weight="800" fill="#38bdf8" letter-spacing="1px">TIER 1 • DATA INGESTION &amp; TEMPORAL RECONCILIATION (src/pipeline.py)</text>
+
+    <!-- Node 1: Raw Sources -->
+    <g transform="translate(24, 38)">
+      <rect width="250" height="82" rx="10" fill="url(#blueGrad)" stroke="#1e293b" stroke-width="1.2"/>
+      <text x="16" y="24" font-size="13" font-weight="700" fill="#f1f5f9">1. Raw Extracts (4 CSVs)</text>
+      <text x="16" y="44" font-size="11" fill="#94a3b8">• sales_daily (123k rows, 192 SKUs)</text>
+      <text x="16" y="62" font-size="11" fill="#94a3b8">• sku_master, calendar, inventory</text>
+    </g>
+
+    <path d="M 274 79 L 320 79" stroke="#06b6d4" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrowCyan)"/>
+
+    <!-- Node 2: Data Cleaning -->
+    <g transform="translate(325, 38)">
+      <rect width="280" height="82" rx="10" fill="url(#blueGrad)" stroke="#0284c7" stroke-width="1.2"/>
+      <text x="16" y="24" font-size="13" font-weight="700" fill="#38bdf8">2. Ingestion Transformations</text>
+      <text x="16" y="44" font-size="11" fill="#94a3b8">• Dedup (614 dups) • Median Impute (2439)</text>
+      <text x="16" y="62" font-size="11" fill="#94a3b8">• 1.5x IQR Outlier Capping (998 records)</text>
+    </g>
+
+    <path d="M 605 79 L 650 79" stroke="#06b6d4" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrowCyan)"/>
+
+    <!-- Node 3: Temporal Merge -->
+    <g transform="translate(655, 38)">
+      <rect width="270" height="82" rx="10" fill="url(#blueGrad)" stroke="#1e293b" stroke-width="1.2"/>
+      <text x="16" y="24" font-size="13" font-weight="700" fill="#f1f5f9">3. Backward As-Of Merging</text>
+      <text x="16" y="44" font-size="11" fill="#94a3b8">• Backward merge on transaction date</text>
+      <text x="16" y="62" font-size="11" fill="#94a3b8">• Zero lookahead data leakage</text>
+    </g>
+
+    <path d="M 925 79 L 970 79" stroke="#06b6d4" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrowCyan)"/>
+
+    <!-- Node 4: Clean Data Lake -->
+    <g transform="translate(975, 38)">
+      <rect width="230" height="82" rx="10" fill="#042f2e" stroke="#14b8a6" stroke-width="1.2"/>
+      <text x="16" y="24" font-size="13" font-weight="700" fill="#5eead4">4. Processed Storage</text>
+      <text x="16" y="44" font-size="11" fill="#ccfbf1">• data/processed/cleaned/</text>
+      <text x="16" y="62" font-size="11" fill="#ccfbf1">• analysis_ready.csv (122.8k)</text>
+    </g>
+
+    <!-- Node 5: Manifest -->
+    <g transform="translate(1225, 38)">
+      <rect width="230" height="82" rx="10" fill="#18181b" stroke="#3f3f46" stroke-width="1.2"/>
+      <text x="16" y="24" font-size="13" font-weight="700" fill="#e4e4e7">5. Data Manifest &amp; DVC</text>
+      <text x="16" y="44" font-size="11" fill="#a1a1aa">• DATA_MANIFEST.md</text>
+      <text x="16" y="62" font-size="11" fill="#a1a1aa">• 4-Folder Directory Contract</text>
+    </g>
+  </g>
+
+  <!-- Connect Tier 1 -> Tier 2 -->
+  <path d="M 800 275 L 800 293" stroke="#06b6d4" stroke-width="2.5" marker-end="url(#arrowCyan)"/>
+
+  <!-- ==================== TIER 2: FEATURE ENGINEERING ==================== -->
+  <g transform="translate(60, 295)">
+    <rect width="1480" height="135" rx="16" fill="#082f49" fill-opacity="0.3" stroke="#0369a1" stroke-opacity="0.4" stroke-width="1.5"/>
+    <text x="24" y="26" font-size="12" font-weight="800" fill="#38bdf8" letter-spacing="1px">TIER 2 • FEATURE STORE &amp; TIME SERIES SIGNALS (src/features.py)</text>
+
+    <!-- Card 1: Lags -->
+    <g transform="translate(24, 38)">
+      <rect width="270" height="82" rx="10" fill="url(#blueGrad)" stroke="#1e293b" stroke-width="1.2"/>
+      <text x="16" y="24" font-size="13" font-weight="700" fill="#f1f5f9">Autoregressive Lags</text>
+      <text x="16" y="44" font-size="11" fill="#94a3b8">• Lags: t-1w, t-2w, t-4w, t-6w, t-8w</text>
+      <text x="16" y="62" font-size="11" fill="#94a3b8">• 8-week warmup window cutoff</text>
+    </g>
+
+    <!-- Card 2: Rolling Stats -->
+    <g transform="translate(315, 38)">
+      <rect width="270" height="82" rx="10" fill="url(#blueGrad)" stroke="#1e293b" stroke-width="1.2"/>
+      <text x="16" y="24" font-size="13" font-weight="700" fill="#f1f5f9">Rolling Statistics</text>
+      <text x="16" y="44" font-size="11" fill="#94a3b8">• Windows: 4w, 8w, 12w</text>
+      <text x="16" y="62" font-size="11" fill="#94a3b8">• Mean, Std, Median, Min, Max</text>
+    </g>
+
+    <!-- Card 3: Calendar & Trig -->
+    <g transform="translate(605, 38)">
+      <rect width="270" height="82" rx="10" fill="url(#blueGrad)" stroke="#1e293b" stroke-width="1.2"/>
+      <text x="16" y="24" font-size="13" font-weight="700" fill="#f1f5f9">Cyclical Trigonometry</text>
+      <text x="16" y="44" font-size="11" fill="#94a3b8">• Sin / Cos: Week (52w), Month (12m)</text>
+      <text x="16" y="62" font-size="11" fill="#94a3b8">• Holiday &amp; Promo Event Encodings</text>
+    </g>
+
+    <!-- Card 4: Pricing -->
+    <g transform="translate(895, 38)">
+      <rect width="270" height="82" rx="10" fill="url(#blueGrad)" stroke="#1e293b" stroke-width="1.2"/>
+      <text x="16" y="24" font-size="13" font-weight="700" fill="#f1f5f9">Pricing &amp; Elasticity</text>
+      <text x="16" y="44" font-size="11" fill="#94a3b8">• Price Ratio (Unit / List Price)</text>
+      <text x="16" y="62" font-size="11" fill="#94a3b8">• Discount % &amp; Unit Margin (₹)</text>
+    </g>
+
+    <!-- Card 5: Matrix -->
+    <g transform="translate(1185, 38)">
+      <rect width="270" height="82" rx="10" fill="#064e3b" stroke="#10b981" stroke-width="1.2"/>
+      <text x="16" y="24" font-size="13" font-weight="700" fill="#6ee7b7">Featured Matrix Export</text>
+      <text x="16" y="44" font-size="11" fill="#a7f3d0">• 64 Predictive Feature Columns</text>
+      <text x="16" y="62" font-size="11" fill="#a7f3d0">• 16,235 Weekly Observation Rows</text>
+    </g>
+  </g>
+
+  <!-- Connect Tier 2 -> Tier 3 -->
+  <path d="M 800 430 L 800 448" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrowGreen)"/>
+
+  <!-- ==================== TIER 3: MODEL ZOO & WEIGHT REGISTRY ==================== -->
+  <g transform="translate(60, 450)">
+    <rect width="1480" height="145" rx="16" fill="#052e16" fill-opacity="0.4" stroke="#15803d" stroke-opacity="0.4" stroke-width="1.5"/>
+    <text x="24" y="26" font-size="12" font-weight="800" fill="#4ade80" letter-spacing="1px">TIER 3 • THREE-TIER FORECASTING ENGINE &amp; MODEL REGISTRY (models/)</text>
+
+    <!-- Model 1: Seasonal Naive -->
+    <g transform="translate(24, 38)">
+      <rect width="320" height="92" rx="10" fill="url(#blueGrad)" stroke="#dc2626" stroke-width="1.2"/>
+      <rect x="220" y="10" width="88" height="20" rx="10" fill="#991b1b" fill-opacity="0.4"/>
+      <text x="264" y="24" font-size="10" font-weight="700" fill="#fca5a5" text-anchor="middle">BASELINE</text>
+      <text x="16" y="24" font-size="13" font-weight="700" fill="#f8fafc">1. Seasonal-Naive</text>
+      <text x="16" y="44" font-size="11" fill="#94a3b8">• 52-Week Lag (ŷ_t = y_{t-52})</text>
+      <text x="16" y="62" font-size="12" font-weight="700" fill="#ef4444">WAPE: 0.1998 | MAPE: 45.5%</text>
+    </g>
+
+    <!-- Model 2: LightGBM -->
+    <g transform="translate(370, 38)">
+      <rect width="360" height="92" rx="10" fill="url(#blueGrad)" stroke="#16a34a" stroke-width="1.2"/>
+      <rect x="250" y="10" width="98" height="20" rx="10" fill="#14532d" fill-opacity="0.5"/>
+      <text x="299" y="24" font-size="10" font-weight="700" fill="#86efac" text-anchor="middle">GBDT + QUANTILES</text>
+      <text x="16" y="24" font-size="13" font-weight="700" fill="#f8fafc">2. LightGBM (Point + Q10/Q90)</text>
+      <text x="16" y="44" font-size="11" fill="#94a3b8">• 80% Quantile Intervals • WAPE: 0.0832</text>
+      <text x="16" y="62" font-size="12" font-weight="700" fill="#22c55e">Beats baseline by 58.4% • RMSE: 30.07</text>
+    </g>
+
+    <!-- Model 3: PyTorch LSTM -->
+    <g transform="translate(755, 38)">
+      <rect width="370" height="92" rx="10" fill="url(#blueGrad)" stroke="#22c55e" stroke-width="2"/>
+      <rect x="270" y="10" width="88" height="20" rx="10" fill="#15803d" fill-opacity="0.7"/>
+      <text x="314" y="24" font-size="10" font-weight="800" fill="#bbf7d0" text-anchor="middle">★ WINNER</text>
+      <text x="16" y="24" font-size="13" font-weight="700" fill="#f8fafc">3. PyTorch Deep LSTM</text>
+      <text x="16" y="44" font-size="11" fill="#94a3b8">• 2-Layer LSTM with 12w sliding tensor</text>
+      <text x="16" y="62" font-size="12" font-weight="700" fill="#4ade80">WAPE: 0.0767 | MAPE: 9.94% | RMSE: 14.19</text>
+    </g>
+
+    <!-- Model Artifacts -->
+    <g transform="translate(1150, 38)">
+      <rect width="305" height="92" rx="10" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.2"/>
+      <text x="16" y="24" font-size="13" font-weight="700" fill="#c7d2fe">Serialized Model Registry</text>
+      <text x="16" y="44" font-size="11" fill="#a5b4fc">• lightgbm_model.txt + q10/q90.joblib</text>
+      <text x="16" y="62" font-size="11" fill="#a5b4fc">• lstm_model.pt (PyTorch state dict + scalers)</text>
+    </g>
+  </g>
+
+  <!-- Connect Tier 3 -> Tier 4 -->
+  <path d="M 800 595 L 800 613" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrowAmber)"/>
+
+  <!-- ==================== TIER 4: BACKEND REST MICROSERVICE ==================== -->
+  <g transform="translate(60, 615)">
+    <rect width="1480" height="205" rx="16" fill="url(#apiGrad)" stroke="#6366f1" stroke-width="2"/>
+    <text x="24" y="26" font-size="13" font-weight="800" fill="#a5b4fc" letter-spacing="1px">TIER 4 • FASTAPI BACKEND SCORING MICROSERVICE (service/main.py • Port 8000)</text>
+    
+    <!-- API Pill Tag -->
+    <g transform="translate(1330, 10)">
+      <rect width="125" height="24" rx="12" fill="#4338ca" stroke="#818cf8" stroke-width="1"/>
+      <text x="62" y="16" font-size="10" font-weight="800" fill="#e0e7ff" text-anchor="middle">REST MICROSERVICE</text>
+    </g>
+
+    <!-- Sub-Block 1: System Endpoints -->
+    <g transform="translate(24, 42)">
+      <rect width="340" height="145" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="16" y="24" font-size="12" font-weight="700" fill="#38bdf8">SYSTEM &amp; PORTFOLIO APIs</text>
+      <text x="16" y="46" font-size="11" font-family="monospace" fill="#22c55e">GET  /health</text>
+      <text x="16" y="62" font-size="10" fill="#94a3b8">Model availability &amp; liveness verification</text>
+      <text x="16" y="86" font-size="11" font-family="monospace" fill="#22c55e">GET  /portfolio/overview</text>
+      <text x="16" y="102" font-size="10" fill="#94a3b8">Portfolio KPIs, total revenue, risk count</text>
+      <text x="16" y="126" font-size="11" font-family="monospace" fill="#22c55e">GET  /models/comparison</text>
+      <text x="16" y="140" font-size="10" fill="#94a3b8">Benchmark leaderboard (WAPE, RMSE)</text>
+    </g>
+
+    <!-- Sub-Block 2: Demand & Risk Endpoints -->
+    <g transform="translate(385, 42)">
+      <rect width="340" height="145" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="16" y="24" font-size="12" font-weight="700" fill="#38bdf8">CATALOG &amp; RISK APIs</text>
+      <text x="16" y="46" font-size="11" font-family="monospace" fill="#22c55e">GET  /skus</text>
+      <text x="16" y="62" font-size="10" fill="#94a3b8">List SKUs with category filtering</text>
+      <text x="16" y="86" font-size="11" font-family="monospace" fill="#22c55e">GET  /sku/{id}/forecast &amp; /history</text>
+      <text x="16" y="102" font-size="10" fill="#94a3b8">Point forecast, 80% interval &amp; time series</text>
+      <text x="16" y="126" font-size="11" font-family="monospace" fill="#22c55e">GET  /risk/catalog &amp; /risk/summary</text>
+      <text x="16" y="140" font-size="10" fill="#94a3b8">Full 192 SKUs with 2x2 matrix &amp; ₹ at stake</text>
+    </g>
+
+    <!-- Sub-Block 3: Real-Time Dual-Model ML Inference -->
+    <g transform="translate(745, 42)">
+      <rect width="430" height="145" rx="10" fill="#1e1b4b" stroke="#818cf8" stroke-width="1.8"/>
+      <rect x="300" y="10" width="118" height="20" rx="10" fill="#4338ca"/>
+      <text x="359" y="24" font-size="9" font-weight="800" fill="#e0e7ff" text-anchor="middle">LIVE INFERENCE</text>
+      <text x="16" y="24" font-size="12" font-weight="800" fill="#c7d2fe">POST /predict/manual (DUAL-MODEL)</text>
+      <text x="16" y="44" font-size="11" fill="#e0e7ff">• User Inputs: Price, Discount %, Promo, Demand</text>
+      <text x="16" y="62" font-size="11" fill="#4ade80">• Model A (LSTM): 12-week tensor sequence</text>
+      <text x="16" y="78" font-size="11" fill="#38bdf8">• Model B (LightGBM): Point + Q10 / Q90 Quantiles</text>
+      <text x="16" y="96" font-size="11" font-weight="700" fill="#fbbf24">• Consensus &amp; Divergence % Calculator</text>
+      <text x="16" y="114" font-size="10" fill="#94a3b8">• POST /batch/forecast (Multiple SKU bulk scoring)</text>
+      <text x="16" y="132" font-size="10" fill="#94a3b8">• GET /api/catalog (Dynamic docs provider)</text>
+    </g>
+
+    <!-- Sub-Block 4: External Integrations -->
+    <g transform="translate(1195, 42)">
+      <rect width="260" height="145" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="16" y="24" font-size="12" font-weight="700" fill="#cbd5e1">EXTERNAL CONSUMERS</text>
+      <text x="16" y="46" font-size="11" fill="#94a3b8">• Warehouse ERP / SAP Systems</text>
+      <text x="16" y="64" font-size="11" fill="#94a3b8">• Shopify / Commerce APIs</text>
+      <text x="16" y="82" font-size="11" fill="#94a3b8">• Automated Cron PO Triggers</text>
+      <text x="16" y="100" font-size="11" fill="#94a3b8">• Mobile Inventory Scanners</text>
+      <text x="16" y="122" font-size="11" font-weight="700" fill="#a5b4fc">Swagger UI: /docs</text>
+    </g>
+  </g>
+
+  <!-- Dual-way Connect Tier 4 <-> Tier 5 -->
+  <path d="M 750 820 L 750 848" stroke="#a855f7" stroke-width="2.5" marker-end="url(#arrowPurple)"/>
+  <path d="M 850 848 L 850 820" stroke="#06b6d4" stroke-width="2.5" marker-end="url(#arrowCyan)"/>
+  <text x="800" y="838" font-size="10" font-weight="800" fill="#e0e7ff" text-anchor="middle">HTTP REST (JSON)</text>
+
+  <!-- ==================== TIER 5: STREAMLIT FRONTEND APPLICATION ==================== -->
+  <g transform="translate(60, 850)">
+    <rect width="1480" height="215" rx="16" fill="url(#uiGrad)" stroke="#2563eb" stroke-width="2"/>
+    <text x="24" y="26" font-size="13" font-weight="800" fill="#93c5fd" letter-spacing="1px">TIER 5 • STREAMLIT HUMAN-IN-THE-LOOP WEB APPLICATION (app/ • Port 8501)</text>
+
+    <!-- Client Status Indicator -->
+    <g transform="translate(1260, 10)">
+      <rect width="195" height="24" rx="12" fill="#1e40af" stroke="#60a5fa" stroke-width="1"/>
+      <text x="97" y="16" font-size="10" font-weight="800" fill="#eff6ff" text-anchor="middle">⚡ API CLIENT: CONNECTED</text>
+    </g>
+
+    <!-- Page 1 & 2 -->
+    <g transform="translate(24, 42)">
+      <rect width="270" height="155" rx="10" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="16" y="24" font-size="12" font-weight="700" fill="#f8fafc">Main &amp; Page 1: Overview</text>
+      <text x="16" y="44" font-size="11" fill="#94a3b8">• Live Backend Status Badge</text>
+      <text x="16" y="62" font-size="11" fill="#94a3b8">• 5 Executive KPI Metrics</text>
+      <text x="16" y="80" font-size="11" fill="#94a3b8">• Multi-Year Revenue Trend</text>
+      <text x="16" y="98" font-size="11" fill="#94a3b8">• Category Sales Breakdown</text>
+      <text x="16" y="116" font-size="11" fill="#94a3b8">• Promotional Uplift Analysis</text>
+      <text x="16" y="136" font-size="11" font-weight="600" fill="#38bdf8">Route: app/streamlit_app.py</text>
+    </g>
+
+    <!-- Page 3 -->
+    <g transform="translate(315, 42)">
+      <rect width="320" height="155" rx="10" fill="#0f172a" stroke="#22c55e" stroke-width="1.2"/>
+      <text x="16" y="24" font-size="12" font-weight="700" fill="#4ade80">Page 2: Forecast &amp; Dual Simulator</text>
+      <text x="16" y="44" font-size="11" fill="#94a3b8">• Tab 1: 3-Model Visualizer &amp; Bounds</text>
+      <text x="16" y="62" font-size="11" font-weight="700" fill="#22c55e">• Tab 2: Live Dual-Model ML Simulator</text>
+      <text x="16" y="80" font-size="11" fill="#e0e7ff">  - Alter Price, Discount, Demand</text>
+      <text x="16" y="98" font-size="11" fill="#e0e7ff">  - Side-by-Side: LSTM vs LightGBM</text>
+      <text x="16" y="116" font-size="11" fill="#e0e7ff">  - Visual Confidence Error Envelopes</text>
+      <text x="16" y="136" font-size="11" font-weight="600" fill="#38bdf8">Route: pages/2_Forecast.py</text>
+    </g>
+
+    <!-- Page 4 & 5 -->
+    <g transform="translate(655, 42)">
+      <rect width="260" height="155" rx="10" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="16" y="24" font-size="12" font-weight="700" fill="#f8fafc">Page 3: Risk Matrix</text>
+      <text x="16" y="44" font-size="11" fill="#94a3b8">• 2x2 Decision Bubble Grid</text>
+      <text x="16" y="62" font-size="11" fill="#94a3b8">• Stockout vs Overstock Risk</text>
+      <text x="16" y="80" font-size="11" fill="#94a3b8">• Size = ₹ Capital at Stake</text>
+      <text x="16" y="98" font-size="11" fill="#94a3b8">• SKU Inspection Flyout</text>
+      <text x="16" y="136" font-size="11" font-weight="600" fill="#38bdf8">Route: pages/3_Risk.py</text>
+    </g>
+
+    <!-- Page 6 -->
+    <g transform="translate(935, 42)">
+      <rect width="250" height="155" rx="10" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <text x="16" y="24" font-size="12" font-weight="700" fill="#f8fafc">Page 4 &amp; 5: Reorder &amp; EDA</text>
+      <text x="16" y="44" font-size="11" fill="#ef4444">• Tab: 🔴 Reorder Now</text>
+      <text x="16" y="62" font-size="11" fill="#f59e0b">• Tab: 🟡 Markdown / Clear</text>
+      <text x="16" y="80" font-size="11" fill="#94a3b8">• 1-Click CSV Procurement Export</text>
+      <text x="16" y="98" font-size="11" fill="#94a3b8">• Cleaning Decisions Log (Audit)</text>
+      <text x="16" y="136" font-size="11" font-weight="600" fill="#38bdf8">Route: 4_Reorder.py &amp; 5_EDA.py</text>
+    </g>
+
+    <!-- Page 7: API Documentation -->
+    <g transform="translate(1205, 42)">
+      <rect width="250" height="155" rx="10" fill="#1e1b4b" stroke="#a855f7" stroke-width="1.5"/>
+      <text x="16" y="24" font-size="12" font-weight="700" fill="#d8b4fe">Page 6: Developer API Portal</text>
+      <text x="16" y="44" font-size="11" fill="#e0e7ff">• In-Dashboard REST API Catalog</text>
+      <text x="16" y="62" font-size="11" fill="#e0e7ff">• Interactive Live Endpoint Tester</text>
+      <text x="16" y="80" font-size="11" fill="#e0e7ff">• Ready-to-copy cURL &amp; Python</text>
+      <text x="16" y="98" font-size="11" fill="#e0e7ff">• Swagger UI Integration link</text>
+      <text x="16" y="136" font-size="11" font-weight="600" fill="#38bdf8">Route: pages/6_API_Docs.py</text>
+    </g>
+  </g>
+</svg>

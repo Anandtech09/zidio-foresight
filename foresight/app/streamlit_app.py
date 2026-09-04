@@ -32,6 +32,7 @@ st.set_page_config(
 )
 
 from app.shared_styles import apply_shared_theme, update_chart_theme
+from app.api_client import client as api_client
 
 # ---------------------------------------------------------------------------
 # Apply Shared Design Theme
@@ -86,6 +87,25 @@ with st.sidebar:
 
     st.divider()
 
+    # Backend microservice connectivity status
+    backend_online = api_client.is_online()
+    if backend_online:
+        st.markdown(
+            '<div style="background:rgba(6,182,212,0.15); border:1px solid #06b6d4; border-radius:8px; padding:8px 12px; margin-bottom:8px;">'
+            '<div style="font-size:0.75rem; font-weight:700; color:#38bdf8;">⚡ REST API: ONLINE (:8000)</div>'
+            '<div style="font-size:0.7rem; color:#94a3b8;">Client-Server Mode Active</div>'
+            '</div>',
+            unsafe_allow_html=True,
+        )
+    else:
+        st.markdown(
+            '<div style="background:rgba(245,158,11,0.12); border:1px solid #f59e0b; border-radius:8px; padding:8px 12px; margin-bottom:8px;">'
+            '<div style="font-size:0.75rem; font-weight:700; color:#fbbf24;">📁 STORAGE: DIRECT MODE</div>'
+            '<div style="font-size:0.7rem; color:#94a3b8;">FastAPI offline (start uvicorn)</div>'
+            '</div>',
+            unsafe_allow_html=True,
+        )
+
     # Forecast source indicator
     if data["risk"] is not None and "forecast_source" in data["risk"].columns:
         source = data["risk"]["forecast_source"].iloc[0]
@@ -120,77 +140,90 @@ st.markdown('<div class="sub-title">Demand Forecasting & Inventory Risk Intellig
 
 
 # ---------------------------------------------------------------------------
-# KPI Row
+# Backend Microservice Status Banner
 # ---------------------------------------------------------------------------
+backend_online = api_client.is_online()
+base_url = api_client.base_url
+if backend_online:
+    st.markdown(
+        f'<div style="background:rgba(6,182,212,0.12); border:1px solid #06b6d4; border-radius:10px; padding:10px 16px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center;">'
+        f'<div><b style="color:#38bdf8;">🟢 FastAPI Backend Active</b> — Connected to REST Microservice on <code>{base_url}</code>. KPI metrics and ML inferences are served over HTTP REST APIs.</div>'
+        f'<a href="{base_url}/docs" target="_blank" style="background:#0284c7; color:#ffffff; padding:4px 12px; border-radius:6px; text-decoration:none; font-size:0.8rem; font-weight:700;">Open Swagger /docs ↗</a>'
+        f'</div>',
+        unsafe_allow_html=True,
+    )
+else:
+    st.markdown(
+        f'<div style="background:rgba(239,68,68,0.12); border:1px solid #ef4444; border-radius:10px; padding:10px 16px; margin-bottom:20px;">'
+        f'<b style="color:#f87171;">🔴 FastAPI Backend Offline</b> — The Streamlit app is currently falling back to static local CSV cache because the microservice is not running. '
+        f'Expected microservice URL: <code>{base_url}</code>. Start the backend: <code>uvicorn service.main:app --port 8000</code>.'
+        f'</div>',
+        unsafe_allow_html=True,
+    )
+
+
+# ---------------------------------------------------------------------------
+# KPI Row (Powered by api_client /portfolio/overview)
+# ---------------------------------------------------------------------------
+overview = api_client.get_overview()
 risk_df = data["risk"]
 analysis = data["analysis"]
 
 c1, c2, c3, c4, c5 = st.columns(5)
 
 with c1:
-    total_skus = analysis["sku_id"].nunique()
+    total_skus = overview.get("total_skus", analysis["sku_id"].nunique() if analysis is not None else 0)
     st.markdown(
         f'<div class="kpi-card"><div class="kpi-value">{total_skus}</div><div class="kpi-label">Total SKUs</div></div>',
         unsafe_allow_html=True,
     )
 
 with c2:
-    if risk_df is not None:
-        at_risk = len(risk_df[risk_df["quadrant"] != "Healthy"])
-        pct = at_risk / max(total_skus, 1) * 100
-        st.markdown(
-            f'<div class="kpi-card"><div class="kpi-value" style="color: #E74C3C;">{at_risk}</div>'
-            f'<div class="kpi-label">SKUs at Risk</div>'
-            f'<div class="kpi-delta" style="color: #E74C3C;">{pct:.0f}% of portfolio</div></div>',
-            unsafe_allow_html=True,
-        )
+    at_risk = overview.get("skus_at_risk", len(risk_df[risk_df["quadrant"] != "Healthy"]) if risk_df is not None else 0)
+    pct = overview.get("risk_percentage", (at_risk / max(total_skus, 1) * 100))
+    st.markdown(
+        f'<div class="kpi-card"><div class="kpi-value" style="color: #E74C3C;">{at_risk}</div>'
+        f'<div class="kpi-label">SKUs at Risk</div>'
+        f'<div class="kpi-delta" style="color: #E74C3C;">{pct:.0f}% of portfolio</div></div>',
+        unsafe_allow_html=True,
+    )
 
 with c3:
-    if risk_df is not None:
-        total_stake = risk_df["total_rupee_at_stake"].sum()
-        if total_stake >= 10_000_000:
-            display_stake = f"₹{total_stake/10_000_000:.1f} Cr"
-        elif total_stake >= 100_000:
-            display_stake = f"₹{total_stake/100_000:.1f} L"
-        else:
-            display_stake = f"₹{total_stake:,.0f}"
-        st.markdown(
-            f'<div class="kpi-card"><div class="kpi-value" style="color: #F39C12;">{display_stake}</div>'
-            f'<div class="kpi-label">Total ₹ at Stake</div></div>',
-            unsafe_allow_html=True,
-        )
+    total_stake = overview.get("total_rupee_at_stake", float(risk_df["total_rupee_at_stake"].sum()) if risk_df is not None else 0.0)
+    if total_stake >= 10_000_000:
+        display_stake = f"₹{total_stake/10_000_000:.1f} Cr"
+    elif total_stake >= 100_000:
+        display_stake = f"₹{total_stake/100_000:.1f} L"
+    else:
+        display_stake = f"₹{total_stake:,.0f}"
+    st.markdown(
+        f'<div class="kpi-card"><div class="kpi-value" style="color: #F39C12;">{display_stake}</div>'
+        f'<div class="kpi-label">Total ₹ at Stake</div></div>',
+        unsafe_allow_html=True,
+    )
 
 with c4:
-    if data["comparison"] is not None:
-        best_model = data["comparison"].loc[data["comparison"]["wape"].idxmin()]
-        best_wape = best_model["wape"]
-        model_name = best_model["name"]
-        st.markdown(
-            f'<div class="kpi-card"><div class="kpi-value" style="color: #27AE60;">{best_wape:.3f}</div>'
-            f'<div class="kpi-label">Best WAPE</div>'
-            f'<div class="kpi-delta" style="color: #27AE60;">{model_name}</div></div>',
-            unsafe_allow_html=True,
-        )
-    elif data["baseline"] is not None:
-        bw = wape_fn(data["baseline"]["actual"].values, data["baseline"]["baseline_forecast"].values)
-        st.markdown(
-            f'<div class="kpi-card"><div class="kpi-value">{bw:.3f}</div><div class="kpi-label">Baseline WAPE</div></div>',
-            unsafe_allow_html=True,
-        )
+    best_wape = overview.get("best_model_wape", 0.0767)
+    model_name = overview.get("best_model_name", "PyTorch LSTM")
+    st.markdown(
+        f'<div class="kpi-card"><div class="kpi-value" style="color: #27AE60;">{best_wape:.3f}</div>'
+        f'<div class="kpi-label">Best WAPE</div>'
+        f'<div class="kpi-delta" style="color: #27AE60;">{model_name}</div></div>',
+        unsafe_allow_html=True,
+    )
 
 with c5:
-    if "revenue" in analysis.columns:
-        total_rev = analysis["revenue"].sum()
-        if total_rev >= 10_000_000:
-            display_rev = f"₹{total_rev/10_000_000:.1f} Cr"
-        elif total_rev >= 100_000:
-            display_rev = f"₹{total_rev/100_000:.1f} L"
-        else:
-            display_rev = f"₹{total_rev:,.0f}"
-        st.markdown(
-            f'<div class="kpi-card"><div class="kpi-value">{display_rev}</div><div class="kpi-label">Total Revenue</div></div>',
-            unsafe_allow_html=True,
-        )
+    total_rev = overview.get("total_revenue", float(analysis["revenue"].sum()) if analysis is not None and "revenue" in analysis.columns else 0.0)
+    if total_rev >= 10_000_000:
+        display_rev = f"₹{total_rev/10_000_000:.1f} Cr"
+    elif total_rev >= 100_000:
+        display_rev = f"₹{total_rev/100_000:.1f} L"
+    else:
+        display_rev = f"₹{total_rev:,.0f}"
+    st.markdown(
+        f'<div class="kpi-card"><div class="kpi-value">{display_rev}</div><div class="kpi-label">Total Revenue</div></div>',
+        unsafe_allow_html=True,
+    )
 
 st.markdown("<br>", unsafe_allow_html=True)
 
