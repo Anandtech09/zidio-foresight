@@ -7,6 +7,8 @@
 ## 🏛️ System Architecture
 
 ![Project FORESIGHT Architecture](foresight/reports/figma_architecture.png)
+![Detailed Architecture](foresight/reports/foresight_figma_architecture.svg)
+![Figma Design Overview](https://www.figma.com/design/yz1LQMAYzVNOm9LbVNjEFI/FORESIGHT-%E2%80%94-Demand-Intelligence-Architecture?node-id=0-1&p=f)
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
